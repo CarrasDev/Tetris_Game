@@ -1,7 +1,6 @@
 import pygame
 
-from game.piece import Piece
-from game.shapes import SHAPES, COLORS
+from game import Piece, Board, Game, SHAPES, COLORS
 
 # Prueba de movimiento y rotación de una pieza
 # Verifica que las claves 'T' existan en SHAPES y COLORS antes de usarlas
