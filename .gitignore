@@ -38,5 +38,5 @@ htmlcov/
 .DS_Store
 
 # Test files
-test.py
-tests/
+# test.py
+# tests/
