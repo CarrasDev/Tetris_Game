@@ -36,3 +36,7 @@ htmlcov/
 
 # macOS
 .DS_Store
+
+# Test files
+test.py
+tests/
