@@ -3,7 +3,6 @@
 # Permitir rotaciones
 # Asignar colores
 
-import random
 
 class Piece:
     def __init__(self, x, y, shape, color):
@@ -17,8 +16,8 @@ class Piece:
         return self.shape[self.rotation]    # Obtener la forma actual de la pieza según su rotación
 
     def rotate(self):
-        self.rotation = (self.rotation + 1) % len(self.shape) # Rotar la pieza de forma cíclica
+        self.rotation = (self.rotation + 1) % len(self.shape)   # Rotar la pieza de forma cíclica
 
 
     
-    # TODO: Proseguir con la implementación de las piezas
+    # TODO: Proseguir con la implementación de metodos de las piezas
