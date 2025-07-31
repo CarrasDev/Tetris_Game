@@ -17,7 +17,13 @@ class Piece:
 
     def rotate(self):
         self.rotation = (self.rotation + 1) % len(self.shape)   # Rotar la pieza de forma cíclica
-
-
+    
+    def rotate_left(self):
+        self.rotation = (self.rotation - 1) % len(self.shape)   # Rotar la pieza hacia la izquierda de forma cíclica
+    
+    def get_cells(self):
+        pass
+        # TODO: Implementar método para obtener las celdas ocupadas por la pieza en el tablero    
+    
     
     # TODO: Proseguir con la implementación de metodos de las piezas
