@@ -49,7 +49,7 @@ class Game:
     
     def drop_piece(self):
         while self.can_move_down():
-            self.current_piece.y += 1
+            pass
         self.board.add_piece(self.current_piece)
         self.clear_lines()
         self.current_piece = self.next_piece
