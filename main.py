@@ -1,6 +1,8 @@
 import pygame
 
-from game import Piece, Board, Game, SHAPES, COLORS
+from game import Piece, Board, SHAPES, COLORS
+
+#, Game
 
 
 

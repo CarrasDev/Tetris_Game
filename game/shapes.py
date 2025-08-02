@@ -157,11 +157,11 @@ SHAPES = {
 # Colores asociados a cada forma
 # Estos colores se representan como tuplas RGB
 COLORS = {
-    'T': (128, 0, 128),  # Púrpura
-    'Z': (255, 0, 0),  # Rojo
-    'S': (0, 255, 0),  # Verde
-    'I': (0, 255, 255),  # Cian
-    'O': (255, 255, 0),  # Amarillo
-    'J': (0, 0, 255),  # Azul
-    'L': (255, 165, 0)  # Naranja
+    'T': (128, 0, 128),     # Púrpura
+    'Z': (255, 0, 0),       # Rojo
+    'S': (0, 255, 0),       # Verde
+    'I': (0, 255, 255),     # Cian
+    'O': (255, 255, 0),     # Amarillo
+    'J': (0, 0, 255),       # Azul
+    'L': (255, 165, 0)      # Naranja
 }
