@@ -20,3 +20,10 @@ while running:
             running = False
 
 pygame.quit()
+
+
+# TODO: Dibujar tablero y pieza actual en la ventana
+# TODO: Implementar lógica de juego básica
+# TODO: Manejar entrada del usuario para mover y rotar la pieza
+# TODO: Implementar caída de piezas y velocidad de juego
+# TODO: Mostrar puntuación, estado del juego y piezas siguientes
