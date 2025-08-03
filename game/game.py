@@ -53,22 +53,10 @@ class Game:
         self.board.add_piece(self.current_piece)
         lines_cleared = self.board.clear_lines()
         self.score += lines_cleared * 100  # TODO: Pendiente de definir sistema de puntuación
-        
+
         # Cambiar a la siguiente pieza
         self.current_piece = self.next_piece
         self.next_piece = self.get_random_piece()
         if not self.is_valid_position():
             self.game_over = True
             print("Game Over!")     # TODO: Implement game over logic
-
-    def clear_lines(self):
-        lines_to_clear = []
-        for y in range(self.board.height):
-            if all(self.board.grid[y][x] != (0, 0, 0) for x in range(self.board.width)):
-                lines_to_clear.append(y)
-        
-        for y in lines_to_clear:
-            del self.board.grid[y]
-            self.board.grid.insert(0, [(0, 0, 0) for _ in range(self.board.width)])
-        
-        self.score += len(lines_to_clear) * 100  # TODO: Pendiente de definir sistema de puntuación
