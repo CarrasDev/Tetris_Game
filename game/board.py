@@ -24,5 +24,21 @@ class Board:
         
         return len(lines_to_clear)  # Return the number of lines cleared
     
+    def is_valid_position(self, piece):
+        for x, y in piece.get_cells():
+            if x < 0 or x >= self.width or y < 0 or y >= self.height:
+                return False
+            if self.grid[y][x] != (0, 0, 0):
+                return False
+        return True
+    
+    def is_cell_empty(self, x, y):
+        return 0 <= x < self.width and 0 <= y < self.height and self.grid[y][x] == (0, 0, 0)
+    
+    def reset(self):
+        self.grid = [[(0, 0, 0) for _ in range(self.width)] for _ in range(self.height)]
+    
+    def get_grid(self):
+        return self.grid
     
     # TODO: Implementar métodos para manejar el tablero, como agregar piezas, eliminar líneas completas, etc.

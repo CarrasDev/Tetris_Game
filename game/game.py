@@ -25,13 +25,7 @@ class Game:
             self.current_piece.rotate_left()
     
     def is_valid_position(self):
-        for cell in self.current_piece.get_cells():
-            x, y = cell
-            if x < 0 or x >= self.board.width or y < 0 or y >= self.board.height:
-                return False
-            if self.board.grid[y][x] != (0, 0, 0):
-                return False
-        return True
+        return self.board.is_valid_position(self.current_piece)
     
     def move_piece(self, dx, dy):
         self.current_piece.x += dx
