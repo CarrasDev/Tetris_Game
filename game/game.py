@@ -51,7 +51,10 @@ class Game:
         while self.can_move_down():
             pass
         self.board.add_piece(self.current_piece)
-        self.clear_lines()
+        lines_cleared = self.board.clear_lines()
+        self.score += lines_cleared * 100  # TODO: Pendiente de definir sistema de puntuación
+        
+        # Cambiar a la siguiente pieza
         self.current_piece = self.next_piece
         self.next_piece = self.get_random_piece()
         if not self.is_valid_position():

@@ -22,8 +22,13 @@ class Piece:
         self.rotation = (self.rotation - 1) % len(self.shape)   # Rotar la pieza hacia la izquierda de forma cíclica
     
     def get_cells(self):
-        pass
-        # TODO: Implementar método para obtener las celdas ocupadas por la pieza en el tablero    
+        cells =  []
+        current_shape = self.get_current_shape()
+        for y, row in enumerate(current_shape):
+            for x, cell in enumerate(row):
+                if cell:
+                    cells.append((self.x + x, self.y + y))
+        return cells   
     
     
     # TODO: Proseguir con la implementación de metodos de las piezas
