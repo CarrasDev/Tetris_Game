@@ -38,6 +38,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    draw_board(screen, game)
+    pygame.display.flip()
+    clock.tick(30)  # Limitar a 30 FPS
+
+    # TODO: Lógica de juego básica
+
+
+
 pygame.quit()
 
 
