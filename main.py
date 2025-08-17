@@ -44,7 +44,19 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-            
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                game.move_piece(-1, 0)
+            elif event.key == pygame.K_RIGHT:
+                game.move_piece(1, 0)
+            elif event.key == pygame.K_DOWN:
+                game.move_piece(0, 1)
+            elif event.key == pygame.K_UP:
+                game.rotate_piece()
+            elif event.key == pygame.K_SPACE:
+                game.drop_piece()
+
+                      
     # Lógica de caída de piezas
     current_time = pygame.time.get_ticks()
     if current_time - last_fall_time > fall_speed:
@@ -59,8 +71,6 @@ while running:
     draw_board(screen, game)
     pygame.display.flip()
     clock.tick(30)  # Limitar a 30 FPS
-    
-    # TODO: Manejar entrada del usuario
 
 
 pygame.quit()
