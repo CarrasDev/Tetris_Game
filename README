@@ -1,0 +1,67 @@
+# Tetris Game
+
+Este es un proyecto de Tetris desarrollado en Python utilizando la librería Pygame.
+
+## Requisitos
+
+- Python 3.8 o superior
+- [Pygame](https://www.pygame.org/) (ver `requirements.txt`)
+
+## Instalación
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/CarrasDev/Tetris_Game.git
+   cd Tetris_Game
+   ```
+
+2. Crea y activa un entorno virtual:
+   ```bash
+   python3 -m venv env
+   source env/bin/activate
+   ```
+
+3. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Ejecución
+
+Desde la raíz del proyecto, ejecuta:
+```bash
+python main.py
+```
+
+## Estructura del proyecto
+
+```
+Tetris_Game/
+│
+├── main.py                # Archivo principal para ejecutar el juego
+├── requirements.txt       # Dependencias del proyecto
+├── game/                  # Módulos del juego
+│   ├── __init__.py
+│   ├── board.py
+│   ├── game.py
+│   ├── piece.py
+│   └── shapes.py
+```
+
+## Controles
+
+- Flecha izquierda: Mover pieza a la izquierda
+- Flecha derecha: Mover pieza a la derecha
+- Flecha abajo: Acelerar caída de la pieza
+- Flecha arriba: Rotar pieza
+- Barra espaciadora: Caída instantánea
+
+## Pendiente / Mejoras
+
+- Mostrar puntuación y próxima pieza
+- Lógica de fin y reinicio del juego
+- Mejorar interfaz gráfica y añadir sonidos
+
+---
+
+¡Disfruta
