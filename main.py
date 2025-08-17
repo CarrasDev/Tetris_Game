@@ -30,27 +30,41 @@ def draw_board(screen, game):
     # Dibujar pieza actual
     for x, y in game.current_piece.get_cells():
         pygame.draw.rect(screen, game.current_piece.color, (x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE))
-        
 
+     
+# Variables de control de caída de piezas TODO: Pendiente decidir si declarar en Game o aquí
+fall_time = 0 # TODO: ¿Necesario?
+fall_speed = 500  # Milisegundos entre caídas de piezas
+last_fall_time = pygame.time.get_ticks()
+
+
+# Bucle principal del juego
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+            
+    # Lógica de caída de piezas
+    current_time = pygame.time.get_ticks()
+    if current_time - last_fall_time > fall_speed:
+        if game.can_move_down():
+            game.move_piece(0, 1)
+        else:
+            game.drop_piece()
+        last_fall_time = current_time
+    
 
+    # Dibujar el estado actual del juego
     draw_board(screen, game)
     pygame.display.flip()
     clock.tick(30)  # Limitar a 30 FPS
-
-    # TODO: Lógica de juego básica
-
+    
+    # TODO: Manejar entrada del usuario
 
 
 pygame.quit()
 
 
-# TODO: Dibujar tablero y pieza actual en la ventana: Hecho
-# TODO: Implementar lógica de juego básica
 # TODO: Manejar entrada del usuario para mover y rotar la pieza
-# TODO: Implementar caída de piezas y velocidad de juego --> Seguir por aquí
 # TODO: Mostrar puntuación, estado del juego y piezas siguientes
