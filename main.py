@@ -68,3 +68,6 @@ pygame.quit()
 
 # TODO: Manejar entrada del usuario para mover y rotar la pieza
 # TODO: Mostrar puntuación, estado del juego y piezas siguientes
+# TODO: Implementar lógica de fin de juego
+# TODO: Implementar lógica de reinicio del juego
+# TODO: Mejorar la interfaz gráfica y añadir sonidos
