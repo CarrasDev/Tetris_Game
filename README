@@ -2,6 +2,8 @@
 
 Este es un proyecto de Tetris desarrollado en Python utilizando la librería Pygame.
 
+Está en un estado inicial del desarrollo y se centra en la lógica básica del juego, incluyendo la creación del tablero, la generación de piezas y el movimiento de las mismas. Aún no se han implementado todas las características del juego completo, como la puntuación, el fin del juego o la interfaz gráfica avanzada.
+
 ## Requisitos
 
 - Python 3.8 o superior
