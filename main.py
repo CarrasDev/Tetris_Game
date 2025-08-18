@@ -32,9 +32,10 @@ def draw_board(screen, game):
         pygame.draw.rect(screen, game.current_piece.color, (x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE))
 
      
-# Variables de control de caída de piezas TODO: Pendiente decidir si declarar en Game o aquí
+# Variables de control de caída de piezas TODO: Pendiente decidir si declarar en Game o como constantes
 fall_time = 0 # TODO: ¿Necesario?
-fall_speed = 500  # Milisegundos entre caídas de piezas
+fall_speed = 700  # Milisegundos entre caídas de piezas
+move_delay = 80  # Milisegundos entre movimientos
 last_fall_time = pygame.time.get_ticks()
 
 
@@ -44,17 +45,24 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                game.move_piece(-1, 0)
-            elif event.key == pygame.K_RIGHT:
-                game.move_piece(1, 0)
-            elif event.key == pygame.K_DOWN:
-                game.move_piece(0, 1)
-            elif event.key == pygame.K_UP:
+        elif event.type == pygame.KEYDOWN:            
+            if event.key == pygame.K_UP:
                 game.rotate_piece()
             elif event.key == pygame.K_SPACE:
                 game.drop_piece()
+                
+    # Teclas pulsadas permanentemente
+    keys = pygame.key.get_pressed()
+    current_time = pygame.time.get_ticks()
+    if keys[pygame.K_LEFT] and current_time - last_fall_time > move_delay:
+        game.move_piece(-1, 0)
+        last_fall_time = current_time
+    if keys[pygame.K_RIGHT] and current_time - last_fall_time > move_delay:
+        game.move_piece(1, 0)
+        last_fall_time = current_time
+    if keys[pygame.K_DOWN] and current_time - last_fall_time > move_delay:
+        game.move_piece(0, 1)
+        last_fall_time = current_time
 
                       
     # Lógica de caída de piezas
@@ -76,8 +84,8 @@ while running:
 pygame.quit()
 
 
-# TODO: Mejorar entrada del usuario para detectar teclas pulsadas permanentemente
 # TODO: Mostrar puntuación, estado del juego y piezas siguientes
 # TODO: Implementar lógica de fin de juego
 # TODO: Implementar lógica de reinicio del juego
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
+# TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo
