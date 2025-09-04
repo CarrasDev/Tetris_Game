@@ -14,7 +14,7 @@ SCREEN_HEIGHT = CELL_SIZE * BOARD_HEIGHT
 pygame.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Tetris Test")
+pygame.display.set_caption("Block Game")
 
 game = Game(BOARD_WIDTH, BOARD_HEIGHT)
 clock = pygame.time.Clock()
@@ -40,17 +40,21 @@ last_fall_time = pygame.time.get_ticks()
 
 
 # Bucle principal del juego
+paused = False
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:            
-            if event.key == pygame.K_UP:
-                game.rotate_piece()
-            elif event.key == pygame.K_SPACE:
-                game.drop_piece()
-                
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p:
+                paused = not paused
+            if not paused:
+                if event.key == pygame.K_UP:
+                    game.rotate_piece()
+                elif event.key == pygame.K_SPACE:
+                    game.drop_piece()
+    if not paused:
     # Teclas pulsadas permanentemente
     keys = pygame.key.get_pressed()
     current_time = pygame.time.get_ticks()
