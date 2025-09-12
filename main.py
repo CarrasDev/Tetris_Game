@@ -55,32 +55,36 @@ while running:
                 elif event.key == pygame.K_SPACE:
                     game.drop_piece()
     if not paused:
-    # Teclas pulsadas permanentemente
-    keys = pygame.key.get_pressed()
-    current_time = pygame.time.get_ticks()
-    if keys[pygame.K_LEFT] and current_time - last_fall_time > move_delay:
-        game.move_piece(-1, 0)
-        last_fall_time = current_time
-    if keys[pygame.K_RIGHT] and current_time - last_fall_time > move_delay:
-        game.move_piece(1, 0)
-        last_fall_time = current_time
-    if keys[pygame.K_DOWN] and current_time - last_fall_time > move_delay:
-        game.move_piece(0, 1)
-        last_fall_time = current_time
-
-                      
-    # Lógica de caída de piezas
-    current_time = pygame.time.get_ticks()
-    if current_time - last_fall_time > fall_speed:
-        if game.can_move_down():
+        # Teclas pulsadas permanentemente
+        keys = pygame.key.get_pressed()
+        current_time = pygame.time.get_ticks()
+        if keys[pygame.K_LEFT] and current_time - last_fall_time > move_delay:
+            game.move_piece(-1, 0)
+            last_fall_time = current_time
+        if keys[pygame.K_RIGHT] and current_time - last_fall_time > move_delay:
+            game.move_piece(1, 0)
+            last_fall_time = current_time
+        if keys[pygame.K_DOWN] and current_time - last_fall_time > move_delay:
             game.move_piece(0, 1)
-        else:
-            game.drop_piece()
-        last_fall_time = current_time
+            last_fall_time = current_time
+                      
+        # Lógica de caída de piezas
+        current_time = pygame.time.get_ticks()
+        if current_time - last_fall_time > fall_speed:
+            if game.can_move_down():
+                game.move_piece(0, 1)
+            else:
+                game.drop_piece()
+            last_fall_time = current_time
     
 
     # Dibujar el estado actual del juego
     draw_board(screen, game)
+    if paused:
+        font = pygame.font.SysFont('Arial',30)
+        text = font.render('PAUSE', True, (255, 255, 255))
+        rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+        screen.blit(text, rect)
     pygame.display.flip()
     clock.tick(30)  # Limitar a 30 FPS
 
