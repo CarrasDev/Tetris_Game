@@ -47,13 +47,17 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_p:
-                paused = not paused
-            if not paused:
-                if event.key == pygame.K_UP:
-                    game.rotate_piece()
-                elif event.key == pygame.K_SPACE:
-                    game.drop_piece()
+            if game.game_over:
+                game.reset()
+                paused = False
+            else:
+                if event.key == pygame.K_p:
+                    paused = not paused
+                if not paused:
+                    if event.key == pygame.K_UP:
+                        game.rotate_piece()
+                    elif event.key == pygame.K_SPACE:
+                        game.drop_piece()
     if not paused and not game.game_over:
         # Teclas pulsadas permanentemente
         keys = pygame.key.get_pressed()
