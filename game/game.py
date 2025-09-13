@@ -53,4 +53,10 @@ class Game:
         self.next_piece = self.get_random_piece()
         if not self.is_valid_position():
             self.game_over = True
-            print("Game Over!") # TODO: Usar como traza, pendiente eliminar
+    
+    def reset(self):
+        self.board.reset()
+        self.current_piece = self.get_random_piece()
+        self.next_piece = self.get_random_piece()
+        self.score = 0
+        self.game_over = False
