@@ -53,4 +53,4 @@ class Game:
         self.next_piece = self.get_random_piece()
         if not self.is_valid_position():
             self.game_over = True
-            print("Game Over!")     # TODO: Implement game over logic
+            print("Game Over!") # TODO: Usar como traza, pendiente eliminar
