@@ -54,7 +54,7 @@ while running:
                     game.rotate_piece()
                 elif event.key == pygame.K_SPACE:
                     game.drop_piece()
-    if not paused:
+    if not paused and not game.game_over:
         # Teclas pulsadas permanentemente
         keys = pygame.key.get_pressed()
         current_time = pygame.time.get_ticks()
@@ -81,8 +81,13 @@ while running:
     # Dibujar el estado actual del juego
     draw_board(screen, game)
     if paused:
-        font = pygame.font.SysFont('Arial',30)
+        font = pygame.font.SysFont('Arial', 30, bold=True)
         text = font.render('PAUSE', True, (255, 255, 255))
+        rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+        screen.blit(text, rect)
+    if game.game_over:
+        font = pygame.font.SysFont('Arial', 40, bold=True)
+        text = font.render('GAME OVER', True, (255, 0, 0))
         rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         screen.blit(text, rect)
     pygame.display.flip()
@@ -92,7 +97,8 @@ while running:
 pygame.quit()
 
 
-# TODO: Mostrar puntuación, estado del juego y piezas siguientes
+# TODO: Mostrar puntuación, Nivel del juego y piezas siguientes
+# TODO: Definir puntuación según líneas eliminadas o Tetris(4 líneas a la vez)
 # TODO: Implementar lógica de fin de juego
 # TODO: Implementar lógica de reinicio del juego
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
