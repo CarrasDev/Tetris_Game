@@ -59,6 +59,11 @@ def draw_next_piece(screen, game):
                     color,
                     (offset_x + x * CELL_SIZE, offset_y + y * CELL_SIZE, CELL_SIZE, CELL_SIZE)
                 )
+    # Dibujar puntuación
+    score_font = pygame.font.SysFont('Arial', 24, bold=True)
+    score_text = score_font.render(f'Score: {game.score}', True, (255, 255, 255))
+    score_y = offset_y + len(next_shape) * CELL_SIZE + 20
+    screen.blit(score_text, (BOARD_WIDTH * CELL_SIZE + 10, score_y))
 
      
 # Variables de control de caída de piezas TODO: Pendiente decidir si declarar en Game o como constantes
