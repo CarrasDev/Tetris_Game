@@ -112,9 +112,18 @@ while running:
 
     # Dibujar el estado actual del juego
     draw_board(screen, game)
+
+    pygame.draw.line(
+        screen,
+        (80, 80, 80),
+        (BOARD_WIDTH * CELL_SIZE, 0),
+        (BOARD_WIDTH * CELL_SIZE, SCREEN_HEIGHT),
+        2
+    )
+
     draw_next_piece(screen, game)
     if paused:
-        font = pygame.font.SysFont('Arial', 30, bold=True)
+        font = pygame.font.SysFont('Arial', 20, bold=True)
         text = font.render('PAUSE', True, (255, 255, 255))
         rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         screen.blit(text, rect)
