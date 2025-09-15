@@ -43,7 +43,7 @@ def draw_board(screen, game):
         )
 
 
-def draw_next_piece(screen, game):
+def draw_side_panel(screen, game):
     font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
     text = font.render('Next:', True, (255, 255, 0))
     next_x = BOARD_WIDTH * CELL_SIZE + 10
@@ -137,7 +137,8 @@ while running:
         2
     )
 
-    draw_next_piece(screen, game)
+    draw_side_panel(screen, game)
+
     if paused:
         font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
         text = font.render('PAUSE', True, (255, 255, 255))
