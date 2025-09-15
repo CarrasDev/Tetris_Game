@@ -2,7 +2,6 @@ import pygame
 
 from game import Piece, Board, Game, SHAPES, COLORS
 
-# Constantes de tamaño
 CELL_SIZE = 30
 BOARD_WIDTH = 10
 BOARD_HEIGHT = 20
@@ -12,8 +11,11 @@ SCREEN_HEIGHT = CELL_SIZE * BOARD_HEIGHT
 SIDE_PANEL_WIDTH = CELL_SIZE * SIDE_PANEL_INCREMENT
 SCREEN_WIDTH = CELL_SIZE * BOARD_WIDTH + SIDE_PANEL_WIDTH
 
+GAME_FONT = 'Consolas'
+GAME_FONT_SIZE = 20
 
-# Código para iniciar pygame y crear una ventana de prueba
+
+
 pygame.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -23,9 +25,7 @@ game = Game(BOARD_WIDTH, BOARD_HEIGHT)
 clock = pygame.time.Clock()
 
 def draw_board(screen, game):
-    # Dibujar fondo
     screen.fill((0, 0, 0))
-    # Dibujar celdas del tablero
     for y, row in enumerate(game.board.get_grid()):
         for x, color in enumerate(row):
             if color != (0, 0, 0):
@@ -44,9 +44,12 @@ def draw_board(screen, game):
 
 
 def draw_next_piece(screen, game):
-    font = pygame.font.SysFont('Arial', 24, bold=True)
-    text = font.render('Next:', True, (255, 255, 255))
-    screen.blit(text, (BOARD_WIDTH * CELL_SIZE + 10, 10))
+    font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
+    text = font.render('Next:', True, (255, 255, 0))
+    next_x = BOARD_WIDTH * CELL_SIZE + 10
+    next_y = 10
+    screen.blit(text, (next_x, next_y))
+    
     next_shape = game.next_piece.get_current_shape()
     color = game.next_piece.color
     offset_x = BOARD_WIDTH * CELL_SIZE + 40
@@ -59,12 +62,25 @@ def draw_next_piece(screen, game):
                     color,
                     (offset_x + x * CELL_SIZE, offset_y + y * CELL_SIZE, CELL_SIZE, CELL_SIZE)
                 )
+                
+    score_label_font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
+    score_label_text = score_label_font.render('Score:', True, (255, 255, 0))
+    score_label_x = BOARD_WIDTH * CELL_SIZE + 10
+    score_label_y = 180
+    screen.blit(score_label_text, (score_label_x, score_label_y))
+    
+    score_font = pygame.font.SysFont(GAME_FONT, 28, bold=True)
+    score_str = f"{game.score:,}".replace(',', '.')
+    score_text = score_font.render(score_str, True, (255, 255, 255))
+    score_x = score_label_x
+    score_y = score_label_y + 30
+    screen.blit(score_text, (score_x, score_y))
 
      
-# Variables de control de caída de piezas TODO: Pendiente decidir si declarar en Game o como constantes
+# Variables de control de caída
 fall_time = 0
-fall_speed = 700  # Milisegundos entre caídas de piezas
-move_delay = 80  # Milisegundos entre movimientos
+fall_speed = 800  # Milisegundos entre caídas de piezas
+move_delay = 50  # Milisegundos entre movimientos
 last_fall_time = pygame.time.get_ticks()
 
 
@@ -123,12 +139,12 @@ while running:
 
     draw_next_piece(screen, game)
     if paused:
-        font = pygame.font.SysFont('Arial', 20, bold=True)
+        font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
         text = font.render('PAUSE', True, (255, 255, 255))
         rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         screen.blit(text, rect)
     if game.game_over:
-        font = pygame.font.SysFont('Arial', 40, bold=True)
+        font = pygame.font.SysFont(GAME_FONT, 40, bold=True)
         text = font.render('GAME OVER', True, (255, 0, 0))
         rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         screen.blit(text, rect)
@@ -139,9 +155,13 @@ while running:
 pygame.quit()
 
 
-# TODO: Mostrar puntuación, Nivel del juego y piezas siguientes(OK)
-# TODO: Definir puntuación según líneas eliminadas o Tetris(4 líneas a la vez)
+# TODO: Mostrar puntuación(OK), Nivel del juego y piezas siguientes(OK)
+# TODO: Definir puntuación según líneas eliminadas o Tetris(4 líneas a la vez) --> OK
 # TODO: Implementar lógica de fin de juego --> OK
 # TODO: Implementar lógica de reinicio del juego --> OK
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
 # TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo
+# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas con el tiempo o con la puntuación
+
+# TODO: BUGFIX: NO TODAS LAS PIEZAS APARECEN CENTRADAS AL INICIO
+# TODO: BUGFIX: NO TODAS LAS PIEZAS DESCIENDEN LINEA A LINEA
