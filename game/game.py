@@ -48,9 +48,6 @@ class Game:
         self.board.add_piece(self.current_piece)
         lines_cleared = self.board.clear_lines()
         self._update_score(lines_cleared)
-        # TODO: borrar la traza de control de score
-        # print(f"Score: {self.score}")
-        # print(f"Lines cleared: {lines_cleared}")
 
         # Cambiar a la siguiente pieza
         self.current_piece = self.next_piece
