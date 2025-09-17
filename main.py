@@ -60,17 +60,7 @@ while running:
 
     # Dibujar el estado actual del juego
     ui.draw_board(screen, game)
-
-    pygame.draw.line(
-        screen,
-        (80, 80, 80),
-        (BOARD_WIDTH * CELL_SIZE, 0),
-        (BOARD_WIDTH * CELL_SIZE, SCREEN_HEIGHT),
-        2
-    )
-
     ui.draw_side_panel(screen, game)
-
     if paused:
         ui.draw_pause(screen)
     if game.game_over:

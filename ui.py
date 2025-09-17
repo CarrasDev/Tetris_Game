@@ -23,6 +23,15 @@ def draw_board(screen, game):
 
 
 def draw_side_panel(screen, game):
+    # Linea divisoria
+    pygame.draw.line(
+        screen,
+        (80, 80, 80),
+        (BOARD_WIDTH * CELL_SIZE, 0),
+        (BOARD_WIDTH * CELL_SIZE, SCREEN_HEIGHT),
+        2
+    )
+
     font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
     text = font.render('Next:', True, (255, 255, 0))
     next_x = BOARD_WIDTH * CELL_SIZE + 10
