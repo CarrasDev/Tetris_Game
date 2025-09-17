@@ -2,7 +2,7 @@ import pygame
 import ui
 
 from game import Game
-from config import CELL_SIZE, SCREEN_WIDTH, SCREEN_HEIGHT, BOARD_WIDTH, BOARD_HEIGHT, GAME_FONT
+from config import SCREEN_WIDTH, SCREEN_HEIGHT, BOARD_WIDTH, BOARD_HEIGHT
 from config import FALL_SPEED, MOVE_DELAY
 
 
@@ -79,7 +79,7 @@ pygame.quit()
 # TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo --> OK
 
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
-# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas con el tiempo o con la puntuación
+# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas cada 10 líneas eliminadas
 
 # TODO: BUGFIX: NO TODAS LAS PIEZAS APARECEN CENTRADAS AL INICIO
 # TODO: BUGFIX: NO TODAS LAS PIEZAS DESCIENDEN LINEA A LINEA

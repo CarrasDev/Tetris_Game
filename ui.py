@@ -1,6 +1,7 @@
 import pygame
 
-from config import CELL_SIZE, BOARD_WIDTH, GAME_FONT, GAME_FONT_SIZE
+from config import CELL_SIZE, BOARD_WIDTH
+from config import GAME_FONT, GAME_FONT_SIZE
 from config import SCREEN_WIDTH, SCREEN_HEIGHT
 
 def draw_board(screen, game):
