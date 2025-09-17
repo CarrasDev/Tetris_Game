@@ -1,7 +1,12 @@
 import pygame
+import ui
 
 from game import Piece, Board, Game, SHAPES, COLORS
+from config import CELL_SIZE, SCREEN_WIDTH, SCREEN_HEIGHT, BOARD_WIDTH, BOARD_HEIGHT, SIDE_PANEL_WIDTH, SIDE_PANEL_INCREMENT, GAME_FONT, GAME_FONT_SIZE
 
+
+# TODO: Provisional refactorización en config.py
+'''
 CELL_SIZE = 30
 BOARD_WIDTH = 10
 BOARD_HEIGHT = 20
@@ -13,7 +18,7 @@ SCREEN_WIDTH = CELL_SIZE * BOARD_WIDTH + SIDE_PANEL_WIDTH
 
 GAME_FONT = 'Consolas'
 GAME_FONT_SIZE = 20
-
+'''
 
 
 pygame.init()
@@ -24,6 +29,8 @@ pygame.display.set_caption("Block Game")
 game = Game(BOARD_WIDTH, BOARD_HEIGHT)
 clock = pygame.time.Clock()
 
+# TODO: Provisional refactorización en ui.py
+'''
 def draw_board(screen, game):
     screen.fill((0, 0, 0))
     for y, row in enumerate(game.board.get_grid()):
@@ -75,7 +82,7 @@ def draw_side_panel(screen, game):
     score_x = score_label_x
     score_y = score_label_y + 30
     screen.blit(score_text, (score_x, score_y))
-
+'''
      
 # Variables de control de caída
 fall_time = 0
@@ -127,7 +134,7 @@ while running:
     
 
     # Dibujar el estado actual del juego
-    draw_board(screen, game)
+    ui.draw_board(screen, game)
 
     pygame.draw.line(
         screen,
@@ -137,7 +144,7 @@ while running:
         2
     )
 
-    draw_side_panel(screen, game)
+    ui.draw_side_panel(screen, game)
 
     if paused:
         font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
