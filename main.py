@@ -13,8 +13,9 @@ pygame.display.set_caption("Block Game")
 
 game = Game(BOARD_WIDTH, BOARD_HEIGHT)
 clock = pygame.time.Clock()
-last_fall_time = pygame.time.get_ticks()
 
+fall_time = pygame.time.get_ticks()
+move_time = pygame.time.get_ticks()
 
 paused = False
 running = True
@@ -34,28 +35,29 @@ while running:
                         game.rotate_piece()
                     elif event.key == pygame.K_SPACE:
                         game.drop_piece()
+
     if not paused and not game.game_over:
         # Teclas pulsadas permanentemente
         keys = pygame.key.get_pressed()
         current_time = pygame.time.get_ticks()
-        if keys[pygame.K_LEFT] and current_time - last_fall_time > MOVE_DELAY:
+        
+        if keys[pygame.K_LEFT] and current_time - move_time > MOVE_DELAY:
             game.move_piece(-1, 0)
-            last_fall_time = current_time
-        if keys[pygame.K_RIGHT] and current_time - last_fall_time > MOVE_DELAY:
+            move_time = current_time
+        if keys[pygame.K_RIGHT] and current_time - move_time > MOVE_DELAY:
             game.move_piece(1, 0)
-            last_fall_time = current_time
-        if keys[pygame.K_DOWN] and current_time - last_fall_time > MOVE_DELAY:
+            move_time = current_time
+        if keys[pygame.K_DOWN] and current_time - move_time > MOVE_DELAY:
             game.move_piece(0, 1)
-            last_fall_time = current_time
+            move_time = current_time
                       
-        # Lógica de caída de piezas
-        current_time = pygame.time.get_ticks()
-        if current_time - last_fall_time > FALL_SPEED:
+        # Caída automática
+        if current_time - fall_time > FALL_SPEED:
             if game.can_move_down():
                 game.move_piece(0, 1)
             else:
                 game.drop_piece()
-            last_fall_time = current_time
+            fall_time = current_time
     
 
     # Dibujar el estado actual del juego
