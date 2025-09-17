@@ -84,4 +84,3 @@ pygame.quit()
 # TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas cada 10 líneas eliminadas
 
 # TODO: BUGFIX: NO TODAS LAS PIEZAS APARECEN CENTRADAS AL INICIO
-# TODO: BUGFIX: NO TODAS LAS PIEZAS DESCIENDEN LINEA A LINEA
