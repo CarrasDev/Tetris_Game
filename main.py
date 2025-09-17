@@ -72,15 +72,9 @@ while running:
     ui.draw_side_panel(screen, game)
 
     if paused:
-        font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
-        text = font.render('PAUSE', True, (255, 255, 255))
-        rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-        screen.blit(text, rect)
+        ui.draw_pause(screen)
     if game.game_over:
-        font = pygame.font.SysFont(GAME_FONT, 40, bold=True)
-        text = font.render('GAME OVER', True, (255, 0, 0))
-        rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-        screen.blit(text, rect)
+        ui.draw_game_over(screen)
     pygame.display.flip()
     clock.tick(30)  # Limitar a 30 FPS
 
@@ -88,12 +82,13 @@ while running:
 pygame.quit()
 
 
-# TODO: Mostrar puntuación(OK), Nivel del juego y piezas siguientes(OK)
+# TODO: Mostrar puntuación y piezas siguientes --> OK
 # TODO: Definir puntuación según líneas eliminadas o Tetris(4 líneas a la vez) --> OK
 # TODO: Implementar lógica de fin de juego --> OK
 # TODO: Implementar lógica de reinicio del juego --> OK
+# TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo --> OK
+
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
-# TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo
 # TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas con el tiempo o con la puntuación
 
 # TODO: BUGFIX: NO TODAS LAS PIEZAS APARECEN CENTRADAS AL INICIO

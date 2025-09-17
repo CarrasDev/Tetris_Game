@@ -1,6 +1,7 @@
 import pygame
 
 from config import CELL_SIZE, BOARD_WIDTH, GAME_FONT, GAME_FONT_SIZE
+from config import SCREEN_WIDTH, SCREEN_HEIGHT
 
 def draw_board(screen, game):
     screen.fill((0, 0, 0))
@@ -53,3 +54,17 @@ def draw_side_panel(screen, game):
     score_x = score_label_x
     score_y = score_label_y + 30
     screen.blit(score_text, (score_x, score_y))
+
+
+def draw_pause(screen):
+    font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
+    text = font.render('PAUSE', True, (255, 255, 255))
+    rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+    screen.blit(text, rect)
+
+
+def draw_game_over(screen):
+    font = pygame.font.SysFont(GAME_FONT, 40, bold=True)
+    text = font.render('GAME OVER', True, (255, 0, 0))
+    rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+    screen.blit(text, rect)
