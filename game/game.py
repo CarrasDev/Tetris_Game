@@ -37,14 +37,13 @@ class Game:
     
     def can_move_down(self):
         self.current_piece.y += 1
-        if not self.is_valid_position():
-            self.current_piece.y -= 1
-            return False
-        return True
+        valid = self.is_valid_position()
+        self.current_piece.y -= 1   # Restituye la posición original
+        return valid
     
     def drop_piece(self):
         while self.can_move_down():
-            pass
+            self.move_piece(0, 1)
         self.board.add_piece(self.current_piece)
         lines_cleared = self.board.clear_lines()
         self._update_score(lines_cleared)

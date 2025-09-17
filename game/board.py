@@ -40,5 +40,3 @@ class Board:
     
     def get_grid(self):
         return self.grid
-    
-    # TODO: Implementar métodos para manejar el tablero, como agregar piezas, eliminar líneas completas, etc.
