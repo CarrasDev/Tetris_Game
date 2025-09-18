@@ -95,3 +95,6 @@ class Game:
     def get_fall_speed(self, base_speed, min_speed=100):
         speed = int(base_speed * (FALL_ACCELERATION ** self.level))
         return max(speed, min_speed)
+    
+    def get_remaining_lines(self):
+        return LEVEL_UP_LINES - (self.lines_cleared_total % LEVEL_UP_LINES)
