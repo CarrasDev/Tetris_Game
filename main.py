@@ -50,9 +50,11 @@ while running:
         if keys[pygame.K_DOWN] and current_time - move_time > MOVE_DELAY:
             game.move_piece(0, 1)
             move_time = current_time
-                      
+
+        fall_speed = game.get_fall_speed(FALL_SPEED, 100)
+
         # Caída automática
-        if current_time - fall_time > FALL_SPEED:
+        if current_time - fall_time > fall_speed:
             if game.can_move_down():
                 game.move_piece(0, 1)
             else:

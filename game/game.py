@@ -57,7 +57,7 @@ class Game:
             self.game_over = True
             
     def _update_score(self, lines_cleared):
-        # Actualizar nivel
+        # Incrementar nivel cada 10 lineas
         self.lines_cleared_total += lines_cleared
         self.level = self.lines_cleared_total // 10
         
