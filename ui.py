@@ -4,6 +4,10 @@ from config import CELL_SIZE, BOARD_WIDTH
 from config import GAME_FONT, GAME_FONT_SIZE
 from config import SCREEN_WIDTH, SCREEN_HEIGHT
 
+board_center_x = (BOARD_WIDTH * CELL_SIZE) // 2
+board_center_y = (SCREEN_HEIGHT) // 2
+
+
 def draw_board(screen, game):
     screen.fill((0, 0, 0))
 
@@ -120,12 +124,12 @@ def draw_side_panel(screen, game):
 def draw_pause(screen):
     font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
     text = font.render('PAUSE', True, (255, 255, 255))
-    rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+    rect = text.get_rect(center=(board_center_x, board_center_y))
     screen.blit(text, rect)
 
 
 def draw_game_over(screen):
     font = pygame.font.SysFont(GAME_FONT, 40, bold=True)
     text = font.render('GAME OVER', True, (255, 0, 0))
-    rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+    rect = text.get_rect(center=(board_center_x, board_center_y))
     screen.blit(text, rect)
