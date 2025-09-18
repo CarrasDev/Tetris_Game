@@ -33,6 +33,7 @@ def draw_side_panel(screen, game):
         2
     )
 
+    # Next piece
     font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
     text = font.render('Next:', True, (255, 255, 0))
     next_x = BOARD_WIDTH * CELL_SIZE + 10
@@ -52,6 +53,7 @@ def draw_side_panel(screen, game):
                     (offset_x + x * CELL_SIZE, offset_y + y * CELL_SIZE, CELL_SIZE, CELL_SIZE)
                 )
 
+    # Score
     score_label_font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
     score_label_text = score_label_font.render('Score:', True, (255, 255, 0))
     score_label_x = BOARD_WIDTH * CELL_SIZE + 10
@@ -61,9 +63,37 @@ def draw_side_panel(screen, game):
     score_font = pygame.font.SysFont(GAME_FONT, 28, bold=True)
     score_str = f"{game.score:,}".replace(',', '.')
     score_text = score_font.render(score_str, True, (255, 255, 255))
-    score_x = score_label_x
+    score_x = SCREEN_WIDTH - score_text.get_width() - 10
     score_y = score_label_y + 30
     screen.blit(score_text, (score_x, score_y))
+
+    # Level
+    level_label_font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
+    level_label_text = level_label_font.render('Level:', True, (255, 255, 0))
+    level_label_x = BOARD_WIDTH * CELL_SIZE + 10
+    level_label_y = 250
+    screen.blit(level_label_text, (level_label_x, level_label_y))
+    
+    level_font = pygame.font.SysFont(GAME_FONT, 28, bold=True)
+    level_str = f"{game.level}"
+    level_text = level_font.render(level_str, True, (255, 255, 255))
+    level_x = SCREEN_WIDTH - level_text.get_width() - 10
+    level_y = level_label_y + 30
+    screen.blit(level_text, (level_x, level_y))
+
+    # Lines Cleared
+    lines_label_font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
+    lines_label_text = lines_label_font.render('Lines:', True, (255, 255, 0))
+    lines_label_x = BOARD_WIDTH * CELL_SIZE + 10
+    lines_label_y = 320
+    screen.blit(lines_label_text, (lines_label_x, lines_label_y))
+
+    lines_font = pygame.font.SysFont(GAME_FONT, 28, bold=True)
+    lines_str = f"{game.lines_cleared_total}"
+    lines_text = lines_font.render(lines_str, True, (255, 255, 255))
+    lines_x = SCREEN_WIDTH - lines_text.get_width() - 10
+    lines_y = lines_label_y + 30
+    screen.blit(lines_text, (lines_x, lines_y))
 
 
 def draw_pause(screen):
