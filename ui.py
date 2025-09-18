@@ -127,9 +127,31 @@ def draw_pause(screen):
     rect = text.get_rect(center=(board_center_x, board_center_y))
     screen.blit(text, rect)
 
+    # translucido
+    box_rect = pygame.Rect(
+        0, 0,
+        BOARD_WIDTH * CELL_SIZE,
+        SCREEN_HEIGHT
+    )
+    s = pygame.Surface((box_rect.width, box_rect.height), pygame.SRCALPHA)
+    s.fill((0, 0, 0, 180))
+    screen.blit(s, box_rect.topleft)
+    screen.blit(text, rect)
+
 
 def draw_game_over(screen):
     font = pygame.font.SysFont(GAME_FONT, 40, bold=True)
     text = font.render('GAME OVER', True, (255, 0, 0))
     rect = text.get_rect(center=(board_center_x, board_center_y))
+    screen.blit(text, rect)
+
+    # translucido
+    box_rect = pygame.Rect(
+        0, 0,
+        BOARD_WIDTH * CELL_SIZE,
+        SCREEN_HEIGHT
+    )
+    s = pygame.Surface((box_rect.width, box_rect.height), pygame.SRCALPHA)
+    s.fill((0, 0, 0, 180))
+    screen.blit(s, box_rect.topleft)
     screen.blit(text, rect)
