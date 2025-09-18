@@ -80,8 +80,9 @@ pygame.quit()
 # TODO: Implementar lógica de fin de juego --> OK
 # TODO: Implementar lógica de reinicio del juego --> OK
 # TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo --> OK
+# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas cada 10 líneas eliminadas --> OK
 
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
-# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas cada 10 líneas eliminadas
+# TODO: Refactorizar draw_side_panel en Game Class para que sea más modular
 
 # TODO: BUGFIX: NO TODAS LAS PIEZAS APARECEN CENTRADAS AL INICIO
