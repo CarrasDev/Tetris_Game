@@ -50,9 +50,10 @@ while running:
         if keys[pygame.K_DOWN] and current_time - move_time > MOVE_DELAY:
             game.move_piece(0, 1)
             move_time = current_time
-                      
+
         # Caída automática
-        if current_time - fall_time > FALL_SPEED:
+        fall_speed = game.get_fall_speed(FALL_SPEED, 30)
+        if current_time - fall_time > fall_speed:
             if game.can_move_down():
                 game.move_piece(0, 1)
             else:
@@ -79,9 +80,9 @@ pygame.quit()
 # TODO: Implementar lógica de fin de juego --> OK
 # TODO: Implementar lógica de reinicio del juego --> OK
 # TODO: Desacoplar lógica de control de movimiento de piezas y lógica de dibujo --> OK
+# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas cada 10 líneas eliminadas --> OK
 
 # TODO: Mejorar la interfaz gráfica y añadir sonidos
-# TODO: Añadir sistema de niveles que aumente la velocidad de caída de las piezas cada 10 líneas eliminadas
+# TODO: Refactorizar draw_side_panel en Game Class para que sea más modular
 
 # TODO: BUGFIX: NO TODAS LAS PIEZAS APARECEN CENTRADAS AL INICIO
-# TODO: BUGFIX: NO TODAS LAS PIEZAS DESCIENDEN LINEA A LINEA
