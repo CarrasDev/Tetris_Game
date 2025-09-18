@@ -6,6 +6,27 @@ from config import SCREEN_WIDTH, SCREEN_HEIGHT
 
 def draw_board(screen, game):
     screen.fill((0, 0, 0))
+
+    # Dibujar cuadrícula
+    grid_color = (40, 40, 40)  # Gris oscuro
+    for x in range(game.board.width + 1):
+        pygame.draw.line(
+            screen,
+            grid_color,
+            (x * CELL_SIZE, 0),
+            (x * CELL_SIZE, game.board.height * CELL_SIZE),
+            1
+        )
+    for y in range(game.board.height + 1):
+        pygame.draw.line(
+            screen,
+            grid_color,
+            (0, y * CELL_SIZE),
+            (game.board.width * CELL_SIZE, y * CELL_SIZE),
+            1
+        )
+
+    # Dibujar piezas en el tablero
     for y, row in enumerate(game.board.get_grid()):
         for x, color in enumerate(row):
             if color != (0, 0, 0):
