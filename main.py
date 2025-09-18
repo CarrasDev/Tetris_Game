@@ -51,7 +51,7 @@ while running:
             game.move_piece(0, 1)
             move_time = current_time
 
-        fall_speed = game.get_fall_speed(FALL_SPEED, 100)
+        fall_speed = game.get_fall_speed(FALL_SPEED, 30)
 
         # Caída automática
         if current_time - fall_time > fall_speed:

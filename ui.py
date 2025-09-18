@@ -65,6 +65,11 @@ def draw_side_panel(screen, game):
     score_y = score_label_y + 30
     screen.blit(score_text, (score_x, score_y))
 
+    font = pygame.font.SysFont(GAME_FONT, GAME_FONT_SIZE, bold=True)
+    level_text = font.render(f'Nivel: {game.level}', True, (255, 255, 0))
+    score_y += 60
+    screen.blit(level_text, (score_x, score_y))
+
 
 def draw_pause(screen):
     font = pygame.font.SysFont(GAME_FONT, 20, bold=True)
