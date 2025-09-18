@@ -57,6 +57,11 @@ class Game:
             self.game_over = True
             
     def _update_score(self, lines_cleared):
+        # Actualizar nivel
+        self.lines_cleared_total += lines_cleared
+        self.level = self.lines_cleared_total // 10
+        
+        # Actualizar puntuación
         if lines_cleared == 1:
             self.score += 100
             self.tetris_streak = 0
@@ -84,3 +89,9 @@ class Game:
         self.tetris_streak = 0
         self.level = 0
         self.lines_cleared_total = 0
+
+    def get_fall_speed(self, base_speed, min_speed=100):
+        # Aumenta la velocidad de caida un 15% por cada nivel
+        # pero nunca baja de min_speed
+        speed = int(base_speed * (0.85 ** self.level))
+        return max(speed, min_speed)
