@@ -1,4 +1,7 @@
 import random
+
+from config import FALL_ACCELERATION, LEVEL_UP_LINES, SCORE_PER_LINE, TETRIS_BONUS
+
 from.board import Board
 from.piece import Piece
 from.shapes import SHAPES, COLORS
@@ -57,25 +60,24 @@ class Game:
             self.game_over = True
             
     def _update_score(self, lines_cleared):
-        # Incrementar nivel cada 10 lineas
         self.lines_cleared_total += lines_cleared
-        self.level = self.lines_cleared_total // 10
+        self.level = self.lines_cleared_total // LEVEL_UP_LINES
         
         # Actualizar puntuación
         if lines_cleared == 1:
-            self.score += 100
+            self.score += SCORE_PER_LINE
             self.tetris_streak = 0
         elif lines_cleared == 2:
-            self.score += 300
+            self.score += (SCORE_PER_LINE * 3)
             self.tetris_streak = 0
         elif lines_cleared == 3:
-            self.score += 500
+            self.score += (SCORE_PER_LINE * 5)
             self.tetris_streak = 0
         elif lines_cleared == 4:
             if self.tetris_streak == 0:
-                self.score += 1200
+                self.score += (SCORE_PER_LINE * 12)
             else:
-                self.score += 1200 + (self.tetris_streak * 400)
+                self.score += (SCORE_PER_LINE * 12) + (self.tetris_streak * TETRIS_BONUS)
             self.tetris_streak += 1
         else:
             self.tetris_streak = 0
@@ -91,7 +93,5 @@ class Game:
         self.lines_cleared_total = 0
 
     def get_fall_speed(self, base_speed, min_speed=100):
-        # Aumenta la velocidad de caida un 15% por cada nivel
-        # pero nunca baja de min_speed
-        speed = int(base_speed * (0.85 ** self.level))
+        speed = int(base_speed * (FALL_ACCELERATION ** self.level))
         return max(speed, min_speed)
