@@ -11,6 +11,8 @@ class Game:
         self.score = 0
         self.game_over = False
         self.tetris_streak = 0
+        self.level = 0
+        self.lines_cleared_total = 0
 
     def get_random_piece(self):
         shape_key = random.choice(list(SHAPES.keys()))
@@ -79,3 +81,6 @@ class Game:
         self.next_piece = self.get_random_piece()
         self.score = 0
         self.game_over = False
+        self.tetris_streak = 0
+        self.level = 0
+        self.lines_cleared_total = 0
