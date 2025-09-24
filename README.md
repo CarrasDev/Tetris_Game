@@ -31,7 +31,7 @@ Desde la raíz del proyecto, ejecuta:
 
 ## Estructura del proyecto
 
-'''
+```
 Tetris_Game/
 │
 ├── main.py                # Archivo principal para ejecutar el juego
@@ -52,7 +52,7 @@ Tetris_Game/
 │   └── shapes.py
 ├── LICENCE.md
 └── README.md
-'''
+```
 
 
 ## Controles
