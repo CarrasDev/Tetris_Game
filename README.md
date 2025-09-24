@@ -31,6 +31,7 @@ Desde la raíz del proyecto, ejecuta:
 
 ## Estructura del proyecto
 
+```
 Tetris_Game/
 │
 ├── main.py                # Archivo principal para ejecutar el juego
@@ -49,8 +50,9 @@ Tetris_Game/
 │   ├── game.py
 │   ├── piece.py
 │   └── shapes.py
-├── LICENCE
+├── LICENCE.md
 └── README.md
+```
 
 
 ## Controles
@@ -65,7 +67,10 @@ Tetris_Game/
 - Añadir sonidos y música de fondo
 - Mejorar interfaz gráfica
 
----
+## Capturas de pantalla
+
+![Play](assets/preview/play.png)
+![Game Over](assets/preview/game_over.png)
 
 ¡Disfruta jugando y aprendiendo con este Tetris en Python!
 Si tienes sugerencias o encuentras bugs, no dudes en abrir un issue o un pull request.
