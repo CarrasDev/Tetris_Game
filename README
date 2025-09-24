@@ -2,7 +2,7 @@
 
 Este es un proyecto de Tetris desarrollado en Python utilizando la librería Pygame.
 
-Está en un estado inicial del desarrollo y se centra en la lógica básica del juego, incluyendo la creación del tablero, la generación de piezas y el movimiento de las mismas. Aún no se han implementado todas las características del juego completo, como la puntuación, el fin del juego o la interfaz gráfica avanzada.
+Actualmente el juego es completamente funcional, incluye sistema de puntuación, niveles, panel lateral con información, reinicio tras Game Over, controles clásicos y una interfaz gráfica mejorada. Además, el código está modularizado y preparado para futuras ampliaciones (sonidos, mejoras visuales, etc.).
 
 ## Requisitos
 
@@ -37,18 +37,27 @@ python main.py
 
 ## Estructura del proyecto
 
-```
+
 Tetris_Game/
 │
 ├── main.py                # Archivo principal para ejecutar el juego
+├── ui.py                  # Funciones de interfaz gráfica y panel lateral
+├── config.py              # Constantes de configuración global
 ├── requirements.txt       # Dependencias del proyecto
-├── game/                  # Módulos del juego
+├── assets/                # Recursos (sonidos, imágenes, etc.)
+│   └── sounds/
+│       ├── tetris_sound_apple.mp3
+│       ├── tetris_sound_game_over.mp3
+│       ├── tetris_sound_grow.mp3
+│       └── tetris_sound_squish.mp3
+├── game/                  # Módulos de la lógica del juego
 │   ├── __init__.py
 │   ├── board.py
 │   ├── game.py
 │   ├── piece.py
 │   └── shapes.py
-```
+└── README.md
+
 
 ## Controles
 
@@ -57,6 +66,8 @@ Tetris_Game/
 - Flecha abajo: Acelerar caída de la pieza
 - Flecha arriba: Rotar pieza
 - Barra espaciadora: Caída instantánea
+- P: Pausar/reanudar el juego
+- Cualquier tecla: Reiniciar tras Game Over
 
 ## Pendiente / Mejoras
 
@@ -66,4 +77,7 @@ Tetris_Game/
 
 ---
 
-¡Disfruta
+¡Disfruta jugando y aprendiendo con este Tetris en Python!
+Si tienes sugerencias o encuentras bugs, no dudes en abrir un issue o un pull request.
+
+Hecho con ❤️ por CarrasDev
