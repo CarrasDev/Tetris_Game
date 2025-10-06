@@ -1,4 +1,10 @@
-# Tetris Game
+<div align="center">
+<img src="/assets/preview/banner_block_drop.png" width="1000"/>
+</div>
+
+
+
+## Block Drop Game
 
 Este es un proyecto de Tetris desarrollado en Python utilizando la librería Pygame.
 

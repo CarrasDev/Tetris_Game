@@ -15,7 +15,7 @@ This license file must be included with any redistribution of this project.
 
 
 
-## Disclaimer
+## ⚠️ Disclaimer
 
 This project is an educational recreation of a falling-block puzzle game inspired by the original Tetris.  
 It is intended solely for learning and non-commercial use.  
